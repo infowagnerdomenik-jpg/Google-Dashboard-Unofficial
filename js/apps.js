@@ -6,7 +6,8 @@ const apps = [
     { 
         id: 'docs', 
         url: 'https://docs.google.com', 
-        intent: 'intent://docs/document/#Intent;scheme=https;package=com.google.android.apps.docs.editors.docs;end',
+        // Intent auf das spezifische Paket ohne URL-Navigation -> Drive wird nicht getriggert
+        intent: 'intent://#Intent;package=com.google.android.apps.docs.editors.docs;end',
         icon: 'google_docs.svg', en: 'Docs', de: 'Docs' 
     },
     { id: 'drive', url: 'https://drive.google.com', icon: 'google_drive.svg', en: 'Drive', de: 'Drive' },
@@ -30,17 +31,24 @@ const apps = [
     { 
         id: 'photos', 
         url: 'https://photos.google.com', 
-        intent: 'intent://#Intent;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.google.android.apps.photos;end',
+        intent: 'intent://#Intent;package=com.google.android.apps.photos;end',
         icon: 'google_photos.svg', en: 'Photos', de: 'Fotos' 
     },
-    { id: 'playbooks', url: 'https://play.google.com/books', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
+    { id: 'playbooks', url: 'https://play.google.com', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
     { 
         id: 'sheets', 
         url: 'https://sheets.google.com', 
-        intent: 'intent://spreadsheets/create#Intent;scheme=https;package=com.google.android.apps.docs.editors.sheets;end',
+        // Intent auf das spezifische Paket
+        intent: 'intent://#Intent;package=com.google.android.apps.docs.editors.sheets;end',
         icon: 'google_sheets.svg', en: 'Sheets', de: 'Tabellen' 
     },
-    { id: 'slides', url: 'https://slides.google.com', icon: 'google_slides.svg', en: 'Slides', de: 'Slides' },
+    { 
+        id: 'slides', 
+        url: 'https://slides.google.com', 
+        // Intent auf das spezifische Paket
+        intent: 'intent://#Intent;package=com.google.android.apps.docs.editors.slides;end',
+        icon: 'google_slides.svg', en: 'Slides', de: 'Slides' 
+    },
     { id: 'tasks', url: 'https://tasks.google.com', icon: 'google_tasks.svg', en: 'Tasks', de: 'Tasks' },
     { id: 'translate', url: 'https://translate.google.com', icon: 'google_translate.svg', en: 'Translate', de: 'Übersetzer' },
     { id: 'youtube', url: 'https://youtube.com', icon: 'youtube.svg', en: 'YouTube', de: 'YouTube' },
