@@ -6,10 +6,10 @@
   "background_color": "#1b1b1b",
   "theme_color": "#1b1b1b",
   "icons": [
-    {
-      "src": "google.svg.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+     {
+      "src": "./Google_App_icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+     }
   ]
 }
