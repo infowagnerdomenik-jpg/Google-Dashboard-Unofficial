@@ -6,8 +6,7 @@ const apps = [
     { 
         id: 'docs', 
         url: 'https://docs.google.com', 
-        // Intent auf das spezifische Paket ohne URL-Navigation -> Drive wird nicht getriggert
-        intent: 'intent://#Intent;package=com.google.android.apps.docs.editors.docs;end',
+        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.docs.editors.docs;end',
         icon: 'google_docs.svg', en: 'Docs', de: 'Docs' 
     },
     { id: 'drive', url: 'https://drive.google.com', icon: 'google_drive.svg', en: 'Drive', de: 'Drive' },
@@ -31,22 +30,20 @@ const apps = [
     { 
         id: 'photos', 
         url: 'https://photos.google.com', 
-        intent: 'intent://#Intent;package=com.google.android.apps.photos;end',
+        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.photos;end',
         icon: 'google_photos.svg', en: 'Photos', de: 'Fotos' 
     },
-    { id: 'playbooks', url: 'https://play.google.com', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
+    { id: 'playbooks', url: 'https://play.google.com/books', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
     { 
         id: 'sheets', 
         url: 'https://sheets.google.com', 
-        // Intent auf das spezifische Paket
-        intent: 'intent://#Intent;package=com.google.android.apps.docs.editors.sheets;end',
+        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.docs.editors.sheets;end',
         icon: 'google_sheets.svg', en: 'Sheets', de: 'Tabellen' 
     },
     { 
         id: 'slides', 
         url: 'https://slides.google.com', 
-        // Intent auf das spezifische Paket
-        intent: 'intent://#Intent;package=com.google.android.apps.docs.editors.slides;end',
+        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.docs.editors.slides;end',
         icon: 'google_slides.svg', en: 'Slides', de: 'Slides' 
     },
     { id: 'tasks', url: 'https://tasks.google.com', icon: 'google_tasks.svg', en: 'Tasks', de: 'Tasks' },
@@ -59,7 +56,7 @@ function renderApps() {
     const lang = navigator.language.startsWith('de') ? 'de' : 'en';
     const grid = document.getElementById('app-grid');
     
-    // Erkennung für Android
+    // Erkennung für Android (PWA in Standalone oder Browser)
     const isAndroid = /Android/i.test(navigator.userAgent);
 
     // Suche (Prio 1) extrahieren
@@ -76,7 +73,7 @@ function renderApps() {
         const targetUrl = (isAndroid && app.intent) ? app.intent : app.url;
         
         return `
-            <a href="${targetUrl}" class="app-item" target="_blank">
+            <a href="${targetUrl}" class="app-item" ${!isAndroid ? 'target="_blank"' : ''}>
                 <div class="icon-wrapper ${app.class || ''}">
                     <img src="icons/${app.icon}" alt="${app[lang]}">
                 </div>
