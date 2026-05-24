@@ -20,22 +20,29 @@ const apps = [
     { id: 'news', url: 'https://news.google.com', icon: 'google_news.svg', en: 'News', de: 'News' },
     { id: 'notebooklm', url: 'https://notebooklm.google.com', icon: 'google_notebooklm.svg', en: 'NotebookLM', de: 'NotebookLM', class: 'icon-bg-white' },
     { id: 'one', url: 'https://one.google.com', icon: 'google_one.svg', en: 'One', de: 'One' },
-    { id: 'playbooks', url: 'https://play.google.com', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
-    { id: 'slides', url: 'https://slides.google.com', icon: 'google_slides.svg', en: 'Slides', de: 'Slides' },
+    { 
+        id: 'password_manager', 
+        url: 'https://passwords.google.com', 
+        icon: 'google_password_manager.svg', 
+        en: 'Password Manager', 
+        de: 'Passwort-Manager' 
+    },
+    { 
+        id: 'photos', 
+        url: 'https://photos.google.com', 
+        intent: 'intent://#Intent;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.google.android.apps.photos;end',
+        icon: 'google_photos.svg', en: 'Photos', de: 'Fotos' 
+    },
+    { id: 'playbooks', url: 'https://play.google.com/books', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
     { 
         id: 'sheets', 
         url: 'https://sheets.google.com', 
         intent: 'intent://spreadsheets/create#Intent;scheme=https;package=com.google.android.apps.docs.editors.sheets;end',
         icon: 'google_sheets.svg', en: 'Sheets', de: 'Tabellen' 
     },
+    { id: 'slides', url: 'https://slides.google.com', icon: 'google_slides.svg', en: 'Slides', de: 'Slides' },
     { id: 'tasks', url: 'https://tasks.google.com', icon: 'google_tasks.svg', en: 'Tasks', de: 'Tasks' },
     { id: 'translate', url: 'https://translate.google.com', icon: 'google_translate.svg', en: 'Translate', de: 'Übersetzer' },
-    { 
-        id: 'photos', 
-        url: 'https://photos.google.com', 
-        intent: 'intent://#Intent;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.google.android.apps.photos;end',
-        icon: 'google_photos.svg', en: 'Fotos', de: 'Fotos' 
-    },
     { id: 'youtube', url: 'https://youtube.com', icon: 'youtube.svg', en: 'YouTube', de: 'YouTube' },
     { id: 'ytmusic', url: 'https://music.youtube.com', icon: 'youtube_music.svg', en: 'YT Music', de: 'YT Music' }
 ];
