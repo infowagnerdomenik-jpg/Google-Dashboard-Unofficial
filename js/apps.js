@@ -6,7 +6,8 @@ const apps = [
     { 
         id: 'docs', 
         url: 'https://docs.google.com', 
-        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.docs.editors.docs;end',
+        // Hier ist dein neuer, präziser Intent-String:
+        intent: 'intent://#Intent;component=com.google.android.apps.docs.editors.docs/com.google.android.apps.docs.app.NewMainProxyActivity;action=android.intent.action.MAIN;end',
         icon: 'google_docs.svg', en: 'Docs', de: 'Docs' 
     },
     { id: 'drive', url: 'https://drive.google.com', icon: 'google_drive.svg', en: 'Drive', de: 'Drive' },
@@ -20,32 +21,11 @@ const apps = [
     { id: 'news', url: 'https://news.google.com', icon: 'google_news.svg', en: 'News', de: 'News' },
     { id: 'notebooklm', url: 'https://notebooklm.google.com', icon: 'google_notebooklm.svg', en: 'NotebookLM', de: 'NotebookLM', class: 'icon-bg-white' },
     { id: 'one', url: 'https://one.google.com', icon: 'google_one.svg', en: 'One', de: 'One' },
-    { 
-        id: 'password_manager', 
-        url: 'https://passwords.google.com', 
-        icon: 'google_password_manager.svg', 
-        en: 'Password Manager', 
-        de: 'Passwort-Manager' 
-    },
-    { 
-        id: 'photos', 
-        url: 'https://photos.google.com', 
-        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.photos;end',
-        icon: 'google_photos.svg', en: 'Photos', de: 'Fotos' 
-    },
-    { id: 'playbooks', url: 'https://play.google.com/books', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
-    { 
-        id: 'sheets', 
-        url: 'https://sheets.google.com', 
-        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.docs.editors.sheets;end',
-        icon: 'google_sheets.svg', en: 'Sheets', de: 'Tabellen' 
-    },
-    { 
-        id: 'slides', 
-        url: 'https://slides.google.com', 
-        intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.docs.editors.slides;end',
-        icon: 'google_slides.svg', en: 'Slides', de: 'Slides' 
-    },
+    { id: 'password_manager', url: 'https://passwords.google.com', icon: 'google_password_manager.svg', en: 'Password Manager', de: 'Passwort-Manager' },
+    { id: 'photos', url: 'https://photos.google.com', intent: 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.photos;end', icon: 'google_photos.svg', en: 'Photos', de: 'Fotos' },
+    { id: 'playbooks', url: 'https://play.google.com', icon: 'google_play_books.svg', en: 'Play Books', de: 'Play Books' },
+    { id: 'sheets', url: 'https://sheets.google.com', icon: 'google_sheets.svg', en: 'Sheets', de: 'Tabellen' },
+    { id: 'slides', url: 'https://slides.google.com', icon: 'google_slides.svg', en: 'Slides', de: 'Slides' },
     { id: 'tasks', url: 'https://tasks.google.com', icon: 'google_tasks.svg', en: 'Tasks', de: 'Tasks' },
     { id: 'translate', url: 'https://translate.google.com', icon: 'google_translate.svg', en: 'Translate', de: 'Übersetzer' },
     { id: 'youtube', url: 'https://youtube.com', icon: 'youtube.svg', en: 'YouTube', de: 'YouTube' },
@@ -55,23 +35,14 @@ const apps = [
 function renderApps() {
     const lang = navigator.language.startsWith('de') ? 'de' : 'en';
     const grid = document.getElementById('app-grid');
-    
-    // Erkennung für Android (PWA in Standalone oder Browser)
     const isAndroid = /Android/i.test(navigator.userAgent);
-
-    // Suche (Prio 1) extrahieren
     const searchApp = apps.find(a => a.id === 'search');
     const others = apps.filter(a => a.id !== 'search');
-
-    // Rest alphabetisch sortieren nach aktiver Sprache
     others.sort((a, b) => a[lang].localeCompare(b[lang]));
-
     const sortedApps = [searchApp, ...others];
 
     grid.innerHTML = sortedApps.map(app => {
-        // Logik: Intent nur auf Android verwenden, wenn vorhanden
         const targetUrl = (isAndroid && app.intent) ? app.intent : app.url;
-        
         return `
             <a href="${targetUrl}" class="app-item" ${!isAndroid ? 'target="_blank"' : ''}>
                 <div class="icon-wrapper ${app.class || ''}">
