@@ -1,13 +1,13 @@
 {
-  "name": "Google Dashboard Unofficial",
-  "short_name": "Google",
-  "start_url": "./index.html",
+  "name": "Google Hub",
+  "short_name": "G-Hub",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#202124",
   "theme_color": "#202124",
   "icons": [
     {
-      "src": "./google.svg.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
