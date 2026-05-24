@@ -86,10 +86,21 @@ footer {
     text-align: center;
 }
 
+footer {
+    margin-top: 80px; /* Abstand zum Grid */
+    padding: 40px 20px;
+    border-top: 1px solid #3c4043; /* Dezente Trennlinie */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .footer-text {
-    color: #757575; /* Ein dezentes Grau, das sich vom Hintergrund abhebt */
+    color: #9aa0a6; /* Ein weicheres Grau */
     font-size: 12px;
-    line-height: 1.5;
-    opacity: 0.8;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 500px; /* Begrenzt die Zeilenlänge für bessere Lesbarkeit */
+    font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
