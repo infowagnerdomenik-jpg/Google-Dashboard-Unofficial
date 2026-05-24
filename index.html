@@ -1,39 +1,37 @@
 <!DOCTYPE html>
-<html lang="de"> 
-    <head>
+<html lang="de">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Apps</title>
-    
+    <title>Google Dashboard Unofficial</title>
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#202124">
+    <link rel="stylesheet" href="./css/style.css">
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // Das { scope: './' } zwingt den Worker in den GitHub-Pages Unterordner
-                navigator.serviceWorker.register('./sw.js', { scope: './' });
-            });
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js', { scope: './' }); });
         }
     </script>
-
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-primary: #1f1f1f;
-            --hover-bg: #f0f4f9;
-            font-family: "Google Sans", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #202124;
-                --text-primary: #e3e3e3;
-                --hover-bg: #3c4043;
-            }
-        }
-
-        body {
-            background-color: var(--bg-color);
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="./icons/google_logo.svg" alt="Google"></div>
+    </div>
+    <div class="launcher-container">
+        <div class="grid">
+            <a href="https://mail.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/gmail.svg" alt="Gmail"></div><div class="app-name">Gmail</div></a>
+            <a href="https://drive.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/drive.svg" alt="Drive"></div><div class="app-name">Drive</div></a>
+            <a href="https://calendar.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/calendar.svg" alt="Kalender"></div><div class="app-name">Kalender</div></a>
+            <a href="https://docs.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/docs.svg" alt="Docs"></div><div class="app-name">Docs</div></a>
+            <a href="https://sheets.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/sheets.svg" alt="Tabellen"></div><div class="app-name">Tabellen</div></a>
+            <a href="https://keep.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/keep.svg" alt="Notizen"></div><div class="app-name">Notizen</div></a>
+            <a href="https://contacts.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/contacts.svg" alt="Kontakte"></div><div class="app-name">Kontakte</div></a>
+            <a href="https://photos.google.com" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/photos.svg" alt="Fotos"></div><div class="app-name">Fotos</div></a>
+            <a href="https://messages.google.com/web" class="app-item" target="_blank"><div class="icon-wrapper"><img src="./icons/messages.svg" alt="Messages"></div><div class="app-name">Messages</div></a>
+        </div>
+    </div>
+</body>
+</html>
             color: var(--text-primary);
             margin: 0;
             display: flex;
