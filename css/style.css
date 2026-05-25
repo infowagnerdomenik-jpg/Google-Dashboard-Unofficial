@@ -1,106 +1,113 @@
-:root { 
-    --bg-color: #1b1b1b; /* Der Google-Popup-Farbwert */
-    --text-primary: #e3e3e3; /* Helle Schrift für den dunklen Hintergrund */
-    --hover-bg: #2d2d2d; /* Dezentes Highlight beim Hover */
-    font-family: "Google Sans", Roboto, Helvetica, Arial, sans-serif; 
+/* =========================================
+   1. MATERIAL 3 TOKENS (LIGHT MODE DEFAULT)
+   Aus deiner light.css
+   ========================================= */
+:root {
+    --md-sys-color-background: rgb(249 249 255);
+    --md-sys-color-on-background: rgb(25 28 32);
+    --md-sys-color-surface: rgb(249 249 255);
+    --md-sys-color-on-surface: rgb(25 28 32);
+    --md-sys-color-surface-variant: rgb(224 226 236);
+    --md-sys-color-on-surface-variant: rgb(68 71 78);
+    --md-sys-color-primary: rgb(65 95 145);
+    
+    /* Typografie & Radien (Manuell ergänzt für das Grid) */
+    --md-sys-shape-corner-extra-large: 28px;
+    --md-sys-typescale-body-medium-size: 13px;
 }
 
-body { 
-    background-color: var(--bg-color); 
-    color: var(--text-primary); 
-    margin: 0; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    min-height: 100vh; 
-    /* Mehr Platz oben und unten */
-    padding-top: 80px; 
-    padding-bottom: 80px; 
+/* =========================================
+   2. MATERIAL 3 TOKENS (DARK MODE AUTO-SWITCH)
+   Aus deiner dark.css
+   ========================================= */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --md-sys-color-background: rgb(17 19 24);
+        --md-sys-color-on-background: rgb(226 226 233);
+        --md-sys-color-surface: rgb(17 19 24);
+        --md-sys-color-on-surface: rgb(226 226 233);
+        --md-sys-color-surface-variant: rgb(68 71 78);
+        --md-sys-color-on-surface-variant: rgb(196 198 208);
+        --md-sys-color-primary: rgb(170 199 255);
+    }
 }
 
-.header { 
-    margin-bottom: 50px; /* Mehr Platz zwischen Logo und Grid */
-    text-align: center; 
-    display: flex; 
-    justify-content: center; 
+/* =========================================
+   3. GLOBAL RESET & BASE
+   ========================================= */
+body {
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-surface);
+    font-family: system-ui, -apple-system, Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    user-select: none; /* Verhindert Text-Markierung beim Halten */
+    -webkit-tap-highlight-color: transparent; /* Entfernt den blauen Browser-Klickrahmen */
 }
 
-.logo { width: 200px; }
-.logo img { width: 100%; height: auto; }
-
-/* Responsive Container */
-.launcher-container { 
-    width: 90%; 
-    padding: 16px; 
+/* =========================================
+   4. DASHBOARD GRID (Nativer Look)
+   ========================================= */
+#app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 24px; /* Platz für das Google Logo */
 }
 
-@media (min-width: 600px) { .launcher-container { max-width: 600px; } }
-@media (min-width: 900px) { .launcher-container { max-width: 900px; } }
-
-/* Dynamisches Grid */
-.grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; /* Etwas mehr Lücke zwischen den Apps */
-}
-
-@media (min-width: 600px) { .grid { grid-template-columns: repeat(5, 1fr); } }
-@media (min-width: 900px) { .grid { grid-template-columns: repeat(8, 1fr); } }
-
-.app-item { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    text-decoration: none; 
-    color: var(--text-primary); 
-    padding: 16px 8px; 
-    border-radius: 12px; 
-    transition: background-color 0.2s ease; 
-}
-
-.app-item:hover { background-color: var(--hover-bg); }
-
-.icon-wrapper { 
-    width: 48px; 
-    height: 48px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    margin-bottom: 8px; 
-}
-
-/* NotebookLM-Icon-Anpassung */
-.icon-bg-white {
-    background-color: white;
-    border-radius: 50%;
-    padding: 6px;
-}
-
-.icon-wrapper img { width: 100%; height: 100%; object-fit: contain; }
-.app-name { font-size: 14px; text-align: center; }
-
-footer {
-    margin-top: auto; /* Schiebt den Footer nach unten */
-    padding: 40px 20px;
-    text-align: center;
-}
-
-footer {
-    margin-top: 80px; /* Abstand zum Grid */
-    padding: 40px 20px;
-    border-top: 1px solid #3c4043; /* Dezente Trennlinie */
+/* =========================================
+   5. APP KACHELN (Cards)
+   ========================================= */
+.app-item {
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    aspect-ratio: 1 / 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    padding: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; /* Wichtig für Ripple/Click-Effekte */
+    transition: filter 0.2s ease;
+}
+
+/* Nativer Press-State */
+.app-item:active {
+    filter: brightness(0.8);
+}
+
+/* =========================================
+   6. ICONS & TEXT
+   ========================================= */
+.icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.icon-wrapper img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.footer-text {
-    color: #9aa0a6; /* Ein weicheres Grau */
-    font-size: 12px;
-    line-height: 1.6;
+.app-name {
+    font-size: var(--md-sys-typescale-body-medium-size);
+    font-weight: 500;
     text-align: center;
-    max-width: 500px; /* Begrenzt die Zeilenlänge für bessere Lesbarkeit */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: var(--md-sys-color-on-surface);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
 }
-
