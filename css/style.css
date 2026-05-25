@@ -43,20 +43,18 @@ body {
     -webkit-tap-highlight-color: transparent;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Zieht den Body über den ganzen Screen für den Footer */
+    min-height: 100vh;
 }
 
 /* =========================================
    4. HEADER & LOGO
    ========================================= */
-header {
+.header {
     text-align: center;
     padding: 24px 0 16px 0;
 }
 
-header img, 
-.google-logo, 
-#logo {
+.header .logo img {
     height: 32px;
     width: auto;
     display: block;
@@ -64,8 +62,14 @@ header img,
 }
 
 /* =========================================
-   5. DASHBOARD GRID
+   5. DASHBOARD GRID & CONTAINER
    ========================================= */
+.launcher-container {
+    flex: 1; /* Schiebt den Footer automatisch nach unten */
+    display: flex;
+    flex-direction: column;
+}
+
 #app-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -73,7 +77,8 @@ header img,
     padding: 16px;
     max-width: 600px;
     margin: 0 auto;
-    flex: 1; /* Schiebt den Footer automatisch nach unten */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* =========================================
@@ -129,11 +134,14 @@ header img,
 /* =========================================
    8. FOOTER
    ========================================= */
-footer, 
-.footer {
+footer {
+    margin-top: auto;
+}
+
+.footer-text {
     text-align: center;
     padding: 16px;
     font-size: 10px;
+    line-height: 1.4;
     color: var(--md-sys-color-on-surface-variant);
-    margin-top: auto; /* Haftet unten am Rand */
 }
