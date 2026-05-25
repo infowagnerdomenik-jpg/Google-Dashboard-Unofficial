@@ -68,7 +68,7 @@ body {
     flex: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Zwingt den gesamten Container-Inhalt exakt in die Mitte */
+    align-items: center; 
     width: 100%;
 }
 
@@ -94,11 +94,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 12px; /* Erhöht für mehr Kachelhintergrund (Space außen drum) */
     cursor: pointer;
     text-decoration: none;
     transition: filter 0.2s ease;
-    min-width: 0; /* Verhindert, dass unsichtbare Textbreiten das Grid einseitig verschieben */
+    min-width: 0; 
 }
 
 .app-item:active {
@@ -109,8 +109,8 @@ body {
    7. ICONS & TEXT
    ========================================= */
 .icon-wrapper {
-    width: 48px;
-    height: 48px;
+    width: 46px; 
+    height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,9 +156,23 @@ footer {
 /* Tablet (ab 600px Breite) */
 @media (min-width: 600px) {
     #app-grid {
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 800px;
-        gap: 16px;
+        grid-template-columns: repeat(5, 1fr); /* Auf 5 Spalten für Tablet angepasst */
+        max-width: 580px; /* Begrenzt, damit Kacheln nicht riesig werden */
+        gap: 14px;
+    }
+    
+    .app-item {
+        padding: 12px;
+    }
+    
+    .icon-wrapper {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 8px;
+    }
+    
+    .app-name {
+        font-size: 11px;
     }
 }
 
@@ -166,21 +180,21 @@ footer {
 @media (min-width: 900px) {
     #app-grid {
         grid-template-columns: repeat(8, 1fr);
-        max-width: 680px; /* Reduzierte Breite für kompaktere 15,6 Zoll Darstellung */
-        gap: 12px;
+        max-width: 780px; /* Etwas breiteres Grid für mehr Kachelfläche */
+        gap: 16px;
     }
     
     .app-item {
-        padding: 8px; 
+        padding: 16px; /* Maximales Padding für deutlich mehr Kachelhintergrund */
     }
     
     .icon-wrapper {
-        width: 38px; /* Geschrumpfte Icons für den Desktop */
-        height: 38px;
-        margin-bottom: 6px;
+        width: 40px; /* Kompakte Icons, um den Hintergrund zu betonen */
+        height: 40px;
+        margin-bottom: 8px;
     }
     
     .app-name {
-        font-size: 11px; /* Kleinere Desktop-Schrift */
+        font-size: 11px; 
     }
 }
