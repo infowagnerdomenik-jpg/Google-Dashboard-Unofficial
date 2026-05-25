@@ -78,8 +78,8 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 16px;
-    max-width: 600px;
     width: 100%;
+    max-width: 500px;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -95,7 +95,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 12px; 
+    padding: 8px; /* Standard-Padding wieder normalisiert */
     cursor: pointer;
     text-decoration: none;
     transition: filter 0.2s ease;
@@ -147,5 +147,55 @@ footer {
     padding: 16px;
     font-size: 10px;
     line-height: 1.4;
-    color: var(--md-sys-color-on-surface-
-               
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* =========================================
+   9. RESPONSIVE LAYOUT (TABLET & DESKTOP)
+   ========================================= */
+
+/* Tablet (ab 600px Breite) */
+@media (min-width: 600px) {
+    #app-grid {
+        grid-template-columns: repeat(5, 1fr); 
+        max-width: 650px; 
+        gap: 14px;
+    }
+    
+    .app-item {
+        padding: 8px;
+    }
+    
+    .icon-wrapper {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 8px;
+    }
+    
+    .app-name {
+        font-size: 11px;
+    }
+}
+
+/* Desktop (ab 900px Breite - erzwingt das 15,6" Layout) */
+@media (min-width: 900px) {
+    #app-grid {
+        grid-template-columns: repeat(8, 1fr);
+        max-width: 1000px; /* Erweitert, damit das Grid den Platz am Laptop richtig nutzt */
+        gap: 16px; 
+    }
+    
+    .app-item {
+        padding: 6px; /* Der riesige leere Rand um das Icon ist weg */
+    }
+    
+    .icon-wrapper {
+        width: 40px; /* Die Größe bleibt exakt so, wie sie gut war */
+        height: 40px;
+        margin-bottom: 8px;
+    }
+    
+    .app-name {
+        font-size: 11px; 
+    }
+}
