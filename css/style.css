@@ -65,7 +65,7 @@ body {
    5. DASHBOARD GRID & CONTAINER
    ========================================= */
 .launcher-container {
-    flex: 1; /* Schiebt den Footer automatisch nach unten */
+    flex: 1; 
     display: flex;
     flex-direction: column;
 }
@@ -162,21 +162,22 @@ footer {
 /* Desktop (ab 900px Breite) */
 @media (min-width: 900px) {
     #app-grid {
-        grid-template-columns: repeat(5, 1fr); /* oder 6, falls dir das lieber ist */
-        max-width: 1000px;
-        gap: 20px;
+        grid-template-columns: repeat(8, 1fr);
+        max-width: 850px;
+        gap: 16px;
     }
     
     .app-item {
-        padding: 12px; /* Etwas größere Klickfläche auf dem Desktop */
+        padding: 10px; 
     }
     
     .icon-wrapper {
-        width: 56px;
-        height: 56px;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 10px;
     }
     
     .app-name {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
