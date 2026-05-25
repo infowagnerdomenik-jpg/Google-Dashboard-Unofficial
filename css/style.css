@@ -145,3 +145,38 @@ footer {
     line-height: 1.4;
     color: var(--md-sys-color-on-surface-variant);
 }
+
+/* =========================================
+   9. RESPONSIVE LAYOUT (TABLET & DESKTOP)
+   ========================================= */
+
+/* Tablet (ab 600px Breite) */
+@media (min-width: 600px) {
+    #app-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 800px;
+        gap: 16px;
+    }
+}
+
+/* Desktop (ab 900px Breite) */
+@media (min-width: 900px) {
+    #app-grid {
+        grid-template-columns: repeat(5, 1fr); /* oder 6, falls dir das lieber ist */
+        max-width: 1000px;
+        gap: 20px;
+    }
+    
+    .app-item {
+        padding: 12px; /* Etwas größere Klickfläche auf dem Desktop */
+    }
+    
+    .icon-wrapper {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .app-name {
+        font-size: 14px;
+    }
+}
