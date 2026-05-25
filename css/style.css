@@ -51,12 +51,11 @@ body {
    ========================================= */
 .header {
     text-align: center;
-    padding: 24px 0 16px 0;
-    margin-top: auto; /* Zieht das Element dynamisch in die vertikale Mitte */
+    padding: 48px 0 16px 0;
 }
 
 .header .logo img {
-    height: 48px; /* Logo deutlich vergrößert */
+    height: 48px;
     width: auto;
     display: block;
     margin: 0 auto;
@@ -66,8 +65,10 @@ body {
    5. DASHBOARD GRID & CONTAINER
    ========================================= */
 .launcher-container {
+    flex: 1; 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center; 
     width: 100%;
 }
@@ -138,7 +139,7 @@ body {
    8. FOOTER
    ========================================= */
 footer {
-    margin-top: auto; /* Zwingt den Footer nach ganz unten und gleicht das Layout aus */
+    padding-bottom: 16px;
 }
 
 .footer-text {
@@ -146,9 +147,5 @@ footer {
     padding: 16px;
     font-size: 10px;
     line-height: 1.4;
-    color: var(--md-sys-color-on-surface-variant);
-}
-
-/* =========================================
-   9. RESPONSIVE LAYOUT (TABLET & DESKTOP)
-   =========================================
+    color: var(--md-sys-color-on-surface-
+               
